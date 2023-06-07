@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Evenements extends Model
+class Tournees extends Model
 {
     use HasFactory;
 
-    protected $table = 'evenements';
+    protected $table = 'tournees';
 
     /**
     * The primary key for the model.
@@ -19,12 +19,12 @@ class Evenements extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'tournee',
-       'titre',
+       'nom',
        'mois',
-       'annee',
-       'lieu',
-       'pays',
+       'debut',
+       'fin',
        'date'
     ];
+
+   
 }

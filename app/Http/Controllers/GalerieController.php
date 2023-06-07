@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class GalerieController extends Controller
 {
+    public function index(){
+        $galeries = Galeries::all();
+        return view('site.galerie', compact('galeries'));
+    }
+
     public function store(Request $request){
 
         if ($request->isMethod('post')) {

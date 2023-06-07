@@ -13,14 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('site.index');
-});
+// Route::get('/', function () {
+//     return view('site.index');
+// });
+
+Route::match(['get', 'post'], '/', 'App\Http\Controllers\IndexController@index');
 
 Route::get('/afuma/about', function () { return view('site.about'); });
 Route::get('/afuma/event', function () { return view('site.event'); });
-Route::get('/afuma/spectacle', function () {return view('site.spectacle');});
-Route::get('/afuma/galerie', function () {return view('site.galerie');});
+Route::get('/afuma/spectacle', function () {return view('site.spectacle');}); 
+Route::match(['get', 'post'], '/afuma/galerie', 'App\Http\Controllers\GalerieController@index');
 Route::get('/afuma/blog', function () {return view('site.blog');});
 Route::get('/afuma/presse', function () { return view('site.presse'); });
 Route::get('/afuma/contact', function () {return view('site.contact');});
@@ -56,6 +58,11 @@ Route::prefix('admin')->group(function () {
         Route::match(['get', 'post'], '/blogs/store', 'App\Http\Controllers\BlogController@store');
         Route::match(['get', 'post'], '/blogs/edit/{id}', 'App\Http\Controllers\BlogController@edit');
         Route::match(['get', 'post'], '/blogs/delete/{id}', 'App\Http\Controllers\BlogController@delete');
+
+        Route::match(['get', 'post'], '/tournes', 'App\Http\Controllers\TourneController@show');
+        Route::match(['get', 'post'], '/tournes/store', 'App\Http\Controllers\TourneController@store');
+        Route::match(['get', 'post'], '/tournes/edit/{id}', 'App\Http\Controllers\TourneController@edit');
+        Route::match(['get', 'post'], '/tournes/delete/{id}', 'App\Http\Controllers\TourneController@delete');
 
       
         Route::match(['get', 'post'], '/users', 'App\Http\Controllers\UserController@show');

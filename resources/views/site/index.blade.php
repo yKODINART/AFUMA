@@ -174,17 +174,17 @@ Accueil
       </div>
 
       <div class="row portfolio-container">
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-wrap">
-            <img src="{{asset('assets2/img/44.jpg')}}" class="img-fluid " height="100" alt="">
-            <div class="portfolio-links">
-              <a href="{{asset('assets2/img/44.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+        @foreach ($galeries as $galerie)
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+                <img src="{{$galerie->image}}" class="img-fluid " height="100" alt="">
+                <div class="portfolio-links">
+                <a href="{{$galerie->image}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                </div>
             </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            </div>
+        @endforeach
+        {{-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
           <div class="portfolio-wrap">
             <img src="{{asset('assets2/img/22.jpg')}}" class="img-fluid" alt="">
             <div class="portfolio-links">
@@ -229,10 +229,10 @@ Accueil
               <a href="{{asset('assets2/img/1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
             </div>
           </div>
-        </div>
+        </div> --}}
 
       <div class="gallery-btn d-flex justify-content-end">
-        <a class="btn btn-outline-primary py-2 px-3" href="gallery.php" style="width: 150px;">
+        <a class="btn btn-outline-primary py-2 px-3" href="/afuma/galerie" style="width: 150px;">
             Voir Plus
              <div class="d-inline-flex text-primary ms-2">
                  <i class="fa fa-arrow-right"></i>

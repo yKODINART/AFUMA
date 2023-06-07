@@ -30,16 +30,18 @@ Galerie
 
       <div class="row portfolio-container">
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-wrap">
-            <img src="{{asset('assets2/img/44.jpg')}}" class="img-fluid " height="100"  alt="">
-            <div class="portfolio-links">
-              <a href="{{asset('assets2/img/44.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+        @foreach ($galeries as $galerie)
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+              <div class="portfolio-wrap">
+                <img src="{{$galerie->image}}" class="img-fluid " height="100"  alt="">
+                <div class="portfolio-links">
+                  <a href="{{$galerie->image}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+        @endforeach
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+        {{-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
           <div class="portfolio-wrap">
             <img src="{{asset('assets2/img/22.jpg')}}" class="img-fluid" alt="">
             <div class="portfolio-links">
@@ -112,7 +114,8 @@ Galerie
               <a href="{{asset('assets2/img/3.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
             </div>
           </div>
-        </div>
+        </div> --}}
+
       </div>
     </div>
   </section>

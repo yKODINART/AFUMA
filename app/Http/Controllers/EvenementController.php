@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evenements;
+use App\Models\Tournees;
 use Illuminate\Http\Request;
 
 class EvenementController extends Controller
@@ -14,7 +15,9 @@ class EvenementController extends Controller
         if ($request->isMethod('post')) {
 
                 $request->validate([
+                    'tournee',
                     'titre',
+                    'mois',
                     'annee' => 'required |numeric',
                     'lieu',
                     'pays',
@@ -24,7 +27,9 @@ class EvenementController extends Controller
         
 
                 Evenements::insert([
+                    'tournee' => $request->tournee,
                     'titre' => $request->titre,
+                    'mois' => $request->mois,
                     'annee' => $request->annee,
                     'date' => $request->date,
                     'pays' => $request->pays,
@@ -42,7 +47,8 @@ class EvenementController extends Controller
 
     public function show(){
         $events = Evenements::all();
-        return view('evenements.index', compact('events'));
+        $tournes = Tournees::all();
+        return view('evenements.index', compact('events', 'tournes'));
     }
 
     public function delete($idevent){
@@ -56,8 +62,11 @@ class EvenementController extends Controller
 
         $events = Evenements::where(['id' => $idevent])->first();
         if ($request->isMethod('post')) {
+
             $request->validate([
+                    'tournee',
                     'titre',
+                    'mois',
                     'annee' => 'required |numeric',
                     'lieu',
                     'pays',
@@ -66,7 +75,9 @@ class EvenementController extends Controller
 
 
                 Evenements::where(['id' => $idevent])->update([
+                    'tournee' => $request->tournee,
                     'titre' => $request->titre,
+                    'mois' => $request->mois,
                     'annee' => $request->annee,
                     'date' => $request->date,
                     'pays' => $request->pays,

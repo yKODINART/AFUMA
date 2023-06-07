@@ -10,7 +10,7 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">AFUMA</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Evènements</h6>
+          <h6 class="font-weight-bolder mb-0">Tournées</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -65,7 +65,7 @@
                   <div class="nav-wrapper position-relative end-0">
                     <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
                       <li class="nav-item">
-                        <a class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="modal" data-bs-target="#addevent" href="javascript:;" role="tab" aria-selected="true">
+                        <a class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="modal" data-bs-target="#addtournee" href="javascript:;" role="tab" aria-selected="true">
                           <svg class="text-dark" width="16px" height="16px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                               <g transform="translate(-2319.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -89,89 +89,50 @@
               </div>
             </div>
           </div>
-      <div class="modal fade" id="addevent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      <div class="modal fade" id="addtournee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header text-center">
-              <h4 class="modal-title w-100 font-weight-bold">Ajouter Evènement a une Tournée</h4>
+              <h4 class="modal-title w-100 font-weight-bold">Ajouter une Tournée</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="/admin/evenements/store" method="post" enctype="multipart/form-data">
+            <form action="/admin/tournes/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body mx-3">
 
-                  <div class="md-form mb-2">
-                    <i class="fas fa-envelope prefix grey-text"></i>
-                    <label data-error="wrong" data-success="right" for="form34">Tournée</label>
-                    <select name="tournee"  id="form34" class="form-control validate">
-
-                      @foreach ($tournes as $tourne)
-                         @if (empty($tourne->nom))
-                              <option value="{{$tourne->mois}}">{{$tourne->mois}}</option>
-                              @else
-                              <option value="{{$tourne->nom}}">{{$tourne->nom}}</option>
-                         @endif
-                      @endforeach 
-
-                    </select>
-                  </div>
-
                     <div class="md-form mb-2">
                         <i class="fas fa-envelope prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="form34">Titre</label>
-                        <input type="text" name="titre" id="form34" class="form-control validate">    
+                        <label data-error="wrong" data-success="right" for="form34">Nom (Optionnel) </label>
+                        <input type="text" name="nom" id="form34" class="form-control validate">    
                     </div>
                     
+                    <div class="md-form mb-2">
+                        <i class="fas fa-envelope prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="form34">Mois</label>
+                        <input type="text" name="mois" id="form34" class="form-control validate">    
+                    </div>
+                    
+                    <div class="md-form mb-2">
+                        <i class="fas fa-envelope prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="form34">Debut Tournée</label>
+                        <input type="text" name="debut" id="form34" class="form-control validate">    
+                    </div>
+                    
+                    <div class="md-form mb-2">
+                        <i class="fas fa-envelope prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="form34">Fin Tournée</label>
+                        <input type="text" name="fin" id="form34" class="form-control validate">    
+                    </div>
+
                     <div class="md-form mb-2">
                       <i class="fas fa-envelope prefix grey-text"></i>
-                      <label data-error="wrong" data-success="right" for="form34">Jour</label>
-                      <input type="text" placeholder="Du xx au xx" name="date" id="form34" class="form-control validate">
-                      <label data-error="wrong" for="form34" style="color: red;">Jour Unique , Intervalle de temps </label>    
-                  </div>
-
-                  <div class="md-form mb-2">
-                    <i class="fas fa-envelope prefix grey-text"></i>
-                    <label data-error="wrong" data-success="right" for="form34">Mois</label>
-                    <select name="mois" id="form34" class="form-control validate">
-                      <option value="Janvier">Janvier</option>
-                      <option value="Fevrier">Fevrier</option>
-                      <option value="Mars">Mars</option>
-                      <option value="Avril">Avril</option>
-                      <option value="Mai">Mai</option>
-                       <option value="Juin">Juin</option>
-                       <option value="Juillet">Juillet</option>
-                       <option value="Aout">Aout</option>
-                       <option value="Septembre">Septembre</option>
-                       <option value="Octobre">Octobre</option>
-                       <option value="Novembre">Novembre</option>
-                       <option value="Decembre">Decembre</option>
-                    </select>
-                      
-                  </div>
-
-                    <div class="md-form mb-2">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="form34">Année</label>
-                        <input type="number" name="annee" id="form34" class="form-control validate">    
+                      <label data-error="wrong" data-success="right" for="form34">Date Unique Tournée</label>
+                      <input type="text" name="date" id="form34" class="form-control validate">    
                     </div>
                     
-                    <div class="md-form mb-2">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="form34">Ville</label>
-                        <input type="text" name="lieu" id="form34" class="form-control validate">    
-                    </div>
-                    
-                    <div class="md-form mb-2">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="form34">Pays</label>
-                        <input type="text" name="pays" id="form34" class="form-control validate">    
-                    </div>
-                    
-                  
-            
                  </div>
                     <div class="modal-footer d-flex justify-content-center">
                         <button type="submit" class="btn btn-secondary"> AJOUTER <i class="fas fa-paper-plane-o ml-1"></i></button>
@@ -191,7 +152,7 @@
             <div class="card-header pb-0">
               <div class="row">
                 <div class="col-lg-6 col-7">
-                  <h4>Evènements</h4> 
+                  <h4>Tournées</h4> 
                 </div>   
               </div>
             </div>
@@ -200,75 +161,46 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr class="align-center">
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TOURNEE</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TITRE</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">DATE</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ANNEE</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">VILLE</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">PAYS</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mois</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Debut</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Fin</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ACTIONS</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($events as $event)
+                    @foreach ($tournes as $tourne)
                     <tr>
-                          <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold">{{$event->tournee}} </span>
+                        <td class="align-middle  text-sm">
+                            <span class="text-xs font-weight-bold">{{$tourne->nom}} </span>
                           </td>
                           <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold">{{$event->titre}} </span>
+                            <span class="text-xs font-weight-bold">{{$tourne->mois}}  </span>
                           </td>
                           <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold"> {{$event->date}} {{$event->mois}} </span>
-                          </td>  
-                          <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold">{{$event->annee}}  </span>
+                            <span class="text-xs font-weight-bold"> {{$tourne->debut}} </span>
                           </td>
                           <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold"> {{$event->lieu}} </span>
+                            <span class="text-xs font-weight-bold"> {{$tourne->fin}}  </span>
                           </td>
                           <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold"> {{$event->pays}}  </span>
+                            <span class="text-xs font-weight-bold"> {{$tourne->date}}  </span>
                           </td>
                         
-                      <td>
-                          <a href="javascript:;">
-                            <i class="fas fa-info text-primary text-sm" data-bs-toggle="modal" data-bs-target="#infoevent{{$event->id}}" data-bs-placement="top" title="Info Profile"></i>
-                          </a> &nbsp; 
-                          <a href="javascript:;">
-                            <i class="fas fa-user-edit  text-sm" data-bs-toggle="modal" data-bs-target="#editevent{{$event->id}}" data-bs-placement="top" title="Edit Profile" style="color: blue;"></i>
-                          </a> &nbsp; 
-                          <a href="javascript:;">
-                            <i class="fas fa-trash  text-sm" data-bs-toggle="modal" data-bs-target="#deleteevent{{$event->id}}"  data-bs-placement="top" title="Delete Profile" style="color: red;"></i>
-                          </a>
-                      </td>
+                        <td>
+                            <a href="javascript:;">
+                                <i class="fas fa-user-edit  text-sm" data-bs-toggle="modal" data-bs-target="#edittourne{{$tourne->id}}" data-bs-placement="top" title="Edit Profile" style="color: blue;"></i>
+                            </a> &nbsp; 
+                            <a href="javascript:;">
+                                <i class="fas fa-trash  text-sm" data-bs-toggle="modal" data-bs-target="#deletetourne{{$tourne->id}}"  data-bs-placement="top" title="Delete Profile" style="color: red;"></i>
+                            </a>
+                        </td>
                     </tr>
 
-                    <div class="modal fade" id="infoevent{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold">Détails</h4>
-                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                                 <h3 class="modal-title w-100 font-weight-bold text-center">TOURNEE {{ $event->tournée }}  {{ $event->titre }}   {{ $event->annee }} </h3>
-                                 <p  style="text-align: center"> DATE :  {{ $event->date }} </p> <br>
-                                 <p style="text-align: center"> MOIS :  {{ $event->mois }} </p> <br>
-                                  <p style="text-align: center"> VILLE :  {{ $event->lieu }} </p> <br>
-                                  <p  style="text-align: center"> PAYS :  {{ $event->pays }} </p> <br>
-                                 
-                            
-                              <div class="modal-footer d-flex justify-content-center">
-                                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> FERMER <i class="fas fa-paper-plane-o ml-1"></i></button>
-                              </div>
-                        
-                        </div>
-                      </div>
-                    </div>
+                  
 
-                    <div class="modal fade" id="editevent{{$event->id}}" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="edittourne{{$tourne->id}}" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header text-center">
@@ -277,78 +209,41 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <form action="/admin/evenements/edit/{{$event->id}}" method="post">
+                          <form action="/admin/tournes/edit/{{$tourne->id}}" method="post">
                               @csrf
                               <div class="modal-body mx-3">
               
-                                <div class="md-form mb-2">
-                                  <i class="fas fa-envelope prefix grey-text"></i>
-                                  <label data-error="wrong" data-success="right" for="form34">Tournée</label>
-                                  <select name="tournee"  id="form34" class="form-control validate">
-                                      <option value="{{$event->tournee}}" disabled selected>{{$tourne->tournee}}</option>
-                                    @foreach ($tournes as $tourne)
-                                       @if (empty($tourne->nom))
-                                            <option value="{{$tourne->mois}}">{{$tourne->mois}}</option>
-                                            @else
-                                            <option value="{{$tourne->nom}}">{{$tourne->nom}}</option>
-                                       @endif
-                                    @endforeach 
-              
-                                  </select>    
-                              </div>
-
-                              <div class="md-form mb-2">
-                                <i class="fas fa-envelope prefix grey-text"></i>
-                                <label data-error="wrong" data-success="right" for="form34">Mois</label>
-                                <select name="mois" id="form34" class="form-control validate">
-                                  <option value="{{$event->tournee}}" disabled selected></option>
-                                  <option value="Janvier">Janvier</option>
-                                  <option value="Fevrier">Fevrier</option>
-                                  <option value="Mars">Mars</option>
-                                  <option value="Avril">Avril</option>
-                                  <option value="Mai">Mai</option>
-                                  <option value="Juin">Juin</option>
-                                  <option value="Juillet">Juillet</option>
-                                  <option value="Aout">Aout</option>
-                                  <option value="Septembre">Septembre</option>
-                                  <option value="Octobre">Octobre</option>
-                                  <option value="Novembre">Novembre</option>
-                                  <option value="Decembre">Decembre</option>
-                                </select>
-                                  
-                              </div>
-
                                   <div class="md-form mb-2">
                                       <i class="fas fa-envelope prefix grey-text"></i>
-                                      <label data-error="wrong" data-success="right" for="form34">Titre</label>
-                                      <input type="text" name="titre" value="{{$event->titre}}" id="form34" class="form-control validate">    
+                                      <label data-error="wrong" data-success="right" for="form34">Nom</label>
+                                      <input type="text" name="nom" value="{{$tourne->nom}}" id="form34" class="form-control validate">    
                                   </div>
                                   
+                                  <div class="md-form mb-2">
+                                      <i class="fas fa-envelope prefix grey-text"></i>
+                                      <label data-error="wrong" data-success="right" for="form34">Mois</label>
+                                      <input type="text" name="mois" value="{{$tourne->mois}}" id="form34" class="form-control validate">    
+                                  </div>
                                   
+                                  <div class="md-form mb-2">
+                                      <i class="fas fa-envelope prefix grey-text"></i>
+                                      <label data-error="wrong" data-success="right" for="form34">Debut</label>
+                                      <input type="text" name="debut" value="{{$tourne->debut}}" id="form34" class="form-control validate">    
+                                  </div>
+                                  
+                                  <div class="md-form mb-2">
+                                      <i class="fas fa-envelope prefix grey-text"></i>
+                                      <label data-error="wrong" data-success="right" for="form34">Fin</label>
+                                      <input type="text" name="fin" value="{{$tourne->fin}}" id="form34" class="form-control validate">    
+                                  </div>
+
                                   <div class="md-form mb-2">
                                     <i class="fas fa-envelope prefix grey-text"></i>
-                                    <label data-error="wrong" data-success="right" for="form34">Jour</label>
-                                    <input type="text" name="date" value="{{$event->date}}" id="form34" class="form-control validate">    
+                                    <label data-error="wrong" data-success="right" for="form34">Date Unique Tournée</label>
+                                    <input type="text" name="date" value="{{$tourne->date}}" id="form34" class="form-control validate">    
                                 </div>
-
-                                  <div class="md-form mb-2">
-                                      <i class="fas fa-envelope prefix grey-text"></i>
-                                      <label data-error="wrong" data-success="right" for="form34">Année</label>
-                                      <input type="number" name="annee" value="{{$event->annee}}" id="form34" class="form-control validate">    
-                                  </div>
                                   
-                                  <div class="md-form mb-2">
-                                      <i class="fas fa-envelope prefix grey-text"></i>
-                                      <label data-error="wrong" data-success="right" for="form34">Ville</label>
-                                      <input type="text" name="lieu" value="{{$event->lieu}}" id="form34" class="form-control validate">    
-                                  </div>
-                                  
-                                  <div class="md-form mb-2">
-                                      <i class="fas fa-envelope prefix grey-text"></i>
-                                      <label data-error="wrong" data-success="right" for="form34">Pays</label>
-                                      <input type="text" name="pays" value="{{$event->pays}}" id="form34" class="form-control validate">    
-                                  </div>
-                                  
+                              
                           
                               </div>
                                   <div class="modal-footer d-flex justify-content-center">
@@ -360,7 +255,7 @@
                       </div>
                     </div>
 
-                    <div class="modal fade" id="deleteevent{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="deletetourne{{$tourne->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header text-center">
@@ -369,10 +264,10 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                                  <p style="text-align: center"> Confirmer la suppression de l'evènement a {{ $event->lieu }} ?</p>
+                                  <p style="text-align: center"> Confirmer la suppression de la tournée de {{ $tourne->mois }} ?</p>
 
                               <div class="modal-footer d-flex justify-content-center">
-                                  <a href="/admin/evenements/delete/{{$event->id}}"><button class="btn btn-secondary"> OUI <i class="fas fa-paper-plane-o ml-1"></i></button></a>
+                                  <a href="/admin/tournes/delete/{{$tourne->id}}"><button class="btn btn-secondary"> OUI <i class="fas fa-paper-plane-o ml-1"></i></button></a>
                                   <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> NON <i class="fas fa-paper-plane-o ml-1"></i></button>
                               </div>
                         
