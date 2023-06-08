@@ -19,7 +19,7 @@ class Evenements extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'tournee',
+       'tournee_id',
        'titre',
        'mois',
        'annee',
@@ -27,4 +27,9 @@ class Evenements extends Model
        'pays',
        'date'
     ];
+
+    public function tournees()
+    {
+        return $this->belongsTo(Tournees::class, 'tournee_id', 'id');
+    }
 }

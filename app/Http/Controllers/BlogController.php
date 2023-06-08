@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    public function index(){
+        $blogs = Blogs::all();
+        return view('site.blog', compact('blogs'));
+    }
+
     public function store(Request $request){
 
         if ($request->isMethod('post')) {
@@ -22,12 +27,16 @@ class BlogController extends Controller
 
                 $fileData = [];
 
+              
+
                 if($request->hasFile('image')){
                     $image = $request->file('image');
                     $imagePath = $image->store('public/blog');
                     $imagePath = str_replace('public/', '/storage/', $imagePath);
                     $fileData[] = $imagePath;
                 }
+
+                // $date_text = date('d F Y', strtotime(str_replace('/', '-', $request->date)));
 
                 Blogs::insert([
                     'image' => $imagePath,
@@ -69,13 +78,18 @@ class BlogController extends Controller
                 'sous_titre'=> 'required',
             ]);
 
+           
+           
             if($request->hasFile('image')){
                 $image = $request->file('image');
-                $imagePath = $image->store('public/galerie');
+                $imagePath = $image->store('public/blog');
                 $imagePath = str_replace('public/', '/storage/', $imagePath);
+               
             }
 
+            // $date_text = date('d F Y', strtotime(str_replace('/', '-', $request->date)));
 
+      
                 Blogs::where(['id' => $idblog])->update([
                     'image' => $imagePath,
                     'description' => $request->description,

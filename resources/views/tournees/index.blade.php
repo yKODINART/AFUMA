@@ -110,6 +110,12 @@
                     </div>
                     
                     <div class="md-form mb-2">
+                      <i class="fas fa-envelope prefix grey-text"></i>
+                      <label data-error="wrong" data-success="right" for="form34">Anneé Tournée</label>
+                      <input type="number" name="annee" id="form34" class="form-control validate">    
+                    </div>
+
+                    <div class="md-form mb-2">
                         <i class="fas fa-envelope prefix grey-text"></i>
                         <label data-error="wrong" data-success="right" for="form34">Mois</label>
                         <input type="text" name="mois" id="form34" class="form-control validate">    
@@ -127,11 +133,7 @@
                         <input type="text" name="fin" id="form34" class="form-control validate">    
                     </div>
 
-                    <div class="md-form mb-2">
-                      <i class="fas fa-envelope prefix grey-text"></i>
-                      <label data-error="wrong" data-success="right" for="form34">Anneé Tournée</label>
-                      <input type="number" name="annee" id="form34" class="form-control validate">    
-                    </div>
+                   
                     
                  </div>
                     <div class="modal-footer d-flex justify-content-center">
@@ -161,11 +163,11 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr class="align-center">
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mois</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Debut</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ANNEE</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Mois</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Debut</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Fin</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ACTIONS</th>
                     </tr>
                   </thead>
@@ -176,6 +178,9 @@
                             <span class="text-xs font-weight-bold">{{$tourne->nom}} </span>
                           </td>
                           <td class="align-middle  text-sm">
+                            <span class="text-xs font-weight-bold"> {{$tourne->annee}}  </span>
+                          </td>
+                          <td class="align-middle  text-sm">
                             <span class="text-xs font-weight-bold">{{$tourne->mois}}  </span>
                           </td>
                           <td class="align-middle  text-sm">
@@ -184,9 +189,7 @@
                           <td class="align-middle  text-sm">
                             <span class="text-xs font-weight-bold"> {{$tourne->fin}}  </span>
                           </td>
-                          <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold"> {{$tourne->annee}}  </span>
-                          </td>
+                         
                         
                         <td>
                             <a href="javascript:;">
@@ -215,9 +218,15 @@
               
                                   <div class="md-form mb-2">
                                       <i class="fas fa-envelope prefix grey-text"></i>
-                                      <label data-error="wrong" data-success="right" for="form34">Nom</label>
+                                      <label data-error="wrong" data-success="right" for="form34">Nom (Optionnel)</label>
                                       <input type="text" name="nom" value="{{$tourne->nom}}" id="form34" class="form-control validate">    
                                   </div>
+
+                                  <div class="md-form mb-2">
+                                    <i class="fas fa-envelope prefix grey-text"></i>
+                                    <label data-error="wrong" data-success="right" for="form34">Année Tournée</label>
+                                    <input type="number" name="annee" value="{{$tourne->annee}}" id="form34" class="form-control validate">    
+                                </div>
                                   
                                   <div class="md-form mb-2">
                                       <i class="fas fa-envelope prefix grey-text"></i>
@@ -227,21 +236,17 @@
                                   
                                   <div class="md-form mb-2">
                                       <i class="fas fa-envelope prefix grey-text"></i>
-                                      <label data-error="wrong" data-success="right" for="form34">Debut</label>
+                                      <label data-error="wrong" data-success="right" for="form34">Debut Tournée</label>
                                       <input type="text" name="debut" value="{{$tourne->debut}}" id="form34" class="form-control validate">    
                                   </div>
                                   
                                   <div class="md-form mb-2">
                                       <i class="fas fa-envelope prefix grey-text"></i>
-                                      <label data-error="wrong" data-success="right" for="form34">Fin</label>
+                                      <label data-error="wrong" data-success="right" for="form34">Fin Tournée</label>
                                       <input type="text" name="fin" value="{{$tourne->fin}}" id="form34" class="form-control validate">    
                                   </div>
 
-                                  <div class="md-form mb-2">
-                                    <i class="fas fa-envelope prefix grey-text"></i>
-                                    <label data-error="wrong" data-success="right" for="form34">Date Unique Tournée</label>
-                                    <input type="number" name="annee" value="{{$tourne->annee}}" id="form34" class="form-control validate">    
-                                </div>
+                                 
                                   
                               
                           

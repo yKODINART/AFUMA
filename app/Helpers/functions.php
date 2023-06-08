@@ -186,6 +186,16 @@ if (!function_exists('getValueFromTaux')) {
   }
 
 
+  // La date en texte
+  if (!function_exists('textDate')) {
+    function textDate($date)
+    {
+     $date_text = date('d F Y', strtotime(str_replace('/', '-', $date)));
+      return $date_text;
+    }
+}
+
+
   
   if (!function_exists('getDate')) {
     function getDate($date)

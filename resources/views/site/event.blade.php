@@ -34,44 +34,19 @@ Agenda
         <div class="col-12">
             <div class="schedule-tab">
                 <ul class="nav nav-pills text-center">
-                    @foreach ($events as $event)
+                    @foreach ($tournes as $tourne)
                         <li class="nav-item">
-                            <a class="nav-link active" href="#nov20" data-bs-toggle="pill">
-                                {{$event->mois}}
-                                <span>{{$event->date}} {{$event->mois}}</span>
+                            <a class="nav-link active" href="#{{$tourne->id}}" data-bs-toggle="pill">
+                                {{$tourne->mois}}
+                                <span>{{$tourne->debut}} AU {{$tourne->fin}}  {{$tourne->mois}} </span>
                             </a>
                         </li>
                     @endforeach
-                 
-                  {{-- <li class="nav-item">
-                    <a class="nav-link" href="#nov21" data-bs-toggle="pill">
-                        JUIN
-                        <span>03 AU 26 JUIN</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#nov22" data-bs-toggle="pill">
-                        JUILLET
-                        <span>07 AU 30 JUILLET</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#nov23" data-bs-toggle="pill">
-                        AOUT
-                        <span>02 AU 24 AOUT</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#nov24" data-bs-toggle="pill">
-                        SEPTEMBRE
-                        <span>15 AU 17 SEPT</span>
-                    </a>
-                  </li> --}}
                 </ul>
             </div>
             <div class="schedule-contents bg-schedule">
-                <div class="tab-content" id="pills-tabContent">
-                  <div class="tab-pane fade show active schedule-item" id="nov20">
+                <div class="tab-content" id="pills-tabContent">      
+                  <div class="tab-pane fade show active schedule-item" id="{{$tourne->id}}">
                       <!-- Headings -->
                       <ul class="m-0 p-0">
                           <li class="headings">
@@ -80,21 +55,27 @@ Agenda
                               <div class="test">Pays</div>
                           </li>
                           <!-- Schedule Details -->
-                          <li class="schedule-details">
-                              <div class="block">
-                                  <!-- DATE -->
-                                  <div class="time">
-                                      <span class="time">06 MAI</span>
-                                  </div>
-                                  <!-- VILLE -->
-                                  <div class="speaker">
-                                    <span class="name">{{$event->lieu}}</span>
-                                  </div>
-                                  <!-- PAYS -->
-                                  <div class="subject">{{$event->pays}}</div>
-                              </div>
-                          </li>
-                            <!-- Schedule Details -->
+                        @foreach ($tournes as $tourne)
+                          @foreach ($events as $event)
+                             @if ($event->tournee_id == $tourne->id)
+                                <li class="schedule-details">
+                                    <div class="block">
+                                        <!-- DATE -->
+                                        <div class="time">
+                                            <span class="time">{{$event->date}} {{$event->mois_event}}</span>
+                                        </div>
+                                        <!-- VILLE -->
+                                        <div class="speaker">
+                                        <span class="name">{{$event->lieu}}</span>
+                                        </div>
+                                        <!-- PAYS -->
+                                        <div class="subject">{{$event->pays}}</div>
+                                    </div>
+                                </li>
+                            @endif
+                          @endforeach
+                         
+                            {{-- <!-- Schedule Details -->
                             <li class="schedule-details">
                                 <div class="block">
                                     <!-- DATE -->
@@ -140,11 +121,11 @@ Agenda
                                 <!-- PAYS -->
                                 <div class="subject">SUISSE</div>
                             </div>
-                        </li>
+                        </li> --}}
                       </ul>
                   </div>
-
-                  <!-- Tournée JUIN -->
+                  @endforeach
+                  {{-- <!-- Tournée JUIN -->
                   <div class="tab-pane fade schedule-item" id="nov21">
                       <!-- Headings -->
                       <ul class="m-0 p-0">
@@ -436,7 +417,7 @@ Agenda
                             </div>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
                 </div>
             </div>
         </div>
@@ -892,5 +873,28 @@ Agenda
 </div>
 
 <!-- Recent event end -->
+
+{{-- <script>
+    // Récupérer tous les liens de la liste
+    var links = document.querySelectorAll('.nav-link');
+    
+    // Ajouter un gestionnaire d'événement pour chaque lien
+    links.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Empêcher le comportement par défaut du lien
+            var target = this.getAttribute('href'); // Récupérer l'ID de l'élément cible
+            
+            // Afficher l'élément cible et masquer les autres éléments
+            var items = document.querySelectorAll('.schedule-item');
+            items.forEach(function(item) {
+                if (item.getAttribute('id') === target) {
+                    item.classList.add('show', 'active');
+                } else {
+                    item.classList.remove('show', 'active');
+                }
+            });
+        });
+    });
+</script> --}}
 
 @endsection

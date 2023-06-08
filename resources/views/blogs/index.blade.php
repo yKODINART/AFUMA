@@ -244,7 +244,7 @@
                                   <div class="md-form mb-2">
                                       <i class="fas fa-envelope prefix grey-text"></i>
                                       <label data-error="wrong" data-success="right" for="form34">Image</label>
-                                      <input type="file" name="image[]" value="{{asset($blog->image)}}" id="form34" class="form-control validate" accept="image/*" multiple>    
+                                      <input type="file" name="image" value="{{$blog->image}}" id="form34" class="form-control validate" accept="image/*" multiple>    
                                   </div>
                                   
                                   <div class="md-form mb-2">

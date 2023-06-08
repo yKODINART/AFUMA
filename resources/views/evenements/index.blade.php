@@ -106,13 +106,13 @@
                   <div class="md-form mb-2">
                     <i class="fas fa-envelope prefix grey-text"></i>
                     <label data-error="wrong" data-success="right" for="form34">Tournée</label>
-                    <select name="tournee"  id="form34" class="form-control validate">
+                    <select name="tournee_id"  id="form34" class="form-control validate">
 
                       @foreach ($tournes as $tourne)
                          @if (empty($tourne->nom))
-                              <option value="{{$tourne->mois}}">{{$tourne->mois}}</option>
+                              <option value="{{$tourne->id}}">{{$tourne->mois}}</option>
                               @else
-                              <option value="{{$tourne->nom}}">{{$tourne->nom}}</option>
+                              <option value="{{$tourne->id}}">{{$tourne->nom}}</option>
                          @endif
                       @endforeach 
 
@@ -121,7 +121,7 @@
 
                     <div class="md-form mb-2">
                         <i class="fas fa-envelope prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="form34">Titre</label>
+                        <label data-error="wrong" data-success="right" for="form34">Titre (Optionnel)</label>
                         <input type="text" name="titre" id="form34" class="form-control validate">    
                     </div>
                     
@@ -210,19 +210,19 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($events as $event)
+                    @foreach ($evenements as $event)
                     <tr>
                           <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold">{{$event->tournee}} </span>
+                            <span class="text-xs font-weight-bold">{{$event->nom}} </span>
                           </td>
                           <td class="align-middle  text-sm">
                             <span class="text-xs font-weight-bold">{{$event->titre}} </span>
                           </td>
                           <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold"> {{$event->date}} {{$event->mois}} </span>
+                            <span class="text-xs font-weight-bold"> {{$event->date}} {{$event->mois_event}} </span>
                           </td>  
                           <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold">{{$event->annee}}  </span>
+                            <span class="text-xs font-weight-bold">{{$event->annee_event}}  </span>
                           </td>
                           <td class="align-middle  text-sm">
                             <span class="text-xs font-weight-bold"> {{$event->lieu}} </span>
@@ -253,9 +253,9 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                                 <h3 class="modal-title w-100 font-weight-bold text-center">TOURNEE {{ $event->tournée }}  {{ $event->titre }}   {{ $event->annee }} </h3>
-                                 <p  style="text-align: center"> DATE :  {{ $event->date }} </p> <br>
-                                 <p style="text-align: center"> MOIS :  {{ $event->mois }} </p> <br>
+                                 <h3 class="modal-title w-100 font-weight-bold text-center">TOURNEE {{ $event->nom }}  {{ $event->titre }}   {{ $event->annee_event }} </h3>
+                                 <p  style="text-align: center"> DATE :  {{ $event->annee_event }} </p> <br>
+                                 <p style="text-align: center"> MOIS :  {{ $event->mois_event }} </p> <br>
                                   <p style="text-align: center"> VILLE :  {{ $event->lieu }} </p> <br>
                                   <p  style="text-align: center"> PAYS :  {{ $event->pays }} </p> <br>
                                  
@@ -277,15 +277,15 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <form action="/admin/evenements/edit/{{$event->id}}" method="post">
+                          <form action="/admin/evenements/edit/{{$event->id}}" method="post" enctype="multipart/form-data">
                               @csrf
                               <div class="modal-body mx-3">
-              
+        
                                 <div class="md-form mb-2">
                                   <i class="fas fa-envelope prefix grey-text"></i>
                                   <label data-error="wrong" data-success="right" for="form34">Tournée</label>
-                                  <select name="tournee"  id="form34" class="form-control validate">
-                                      <option value="{{$event->tournee}}" disabled selected>{{$tourne->tournee}}</option>
+                                  <select name="tournee_id"  id="form34" class="form-control validate">
+                                      <option value="{{$event->tournee_id}}" disabled selected>{{$event->nom}}</option>
                                     @foreach ($tournes as $tourne)
                                        @if (empty($tourne->nom))
                                             <option value="{{$tourne->mois}}">{{$tourne->mois}}</option>
@@ -295,13 +295,13 @@
                                     @endforeach 
               
                                   </select>    
-                              </div>
+                                </div>
 
                               <div class="md-form mb-2">
                                 <i class="fas fa-envelope prefix grey-text"></i>
                                 <label data-error="wrong" data-success="right" for="form34">Mois</label>
                                 <select name="mois" id="form34" class="form-control validate">
-                                  <option value="{{$event->tournee}}" disabled selected></option>
+                                  <option disabled selected>{{$event->mois_event}}</option>
                                   <option value="Janvier">Janvier</option>
                                   <option value="Fevrier">Fevrier</option>
                                   <option value="Mars">Mars</option>
@@ -329,12 +329,12 @@
                                     <i class="fas fa-envelope prefix grey-text"></i>
                                     <label data-error="wrong" data-success="right" for="form34">Jour</label>
                                     <input type="text" name="date" value="{{$event->date}}" id="form34" class="form-control validate">    
-                                </div>
+                                  </div>
 
                                   <div class="md-form mb-2">
                                       <i class="fas fa-envelope prefix grey-text"></i>
                                       <label data-error="wrong" data-success="right" for="form34">Année</label>
-                                      <input type="number" name="annee" value="{{$event->annee}}" id="form34" class="form-control validate">    
+                                      <input type="number" name="annee" value="{{$event->annee_event}}" id="form34" class="form-control validate">    
                                   </div>
                                   
                                   <div class="md-form mb-2">
@@ -348,11 +348,10 @@
                                       <label data-error="wrong" data-success="right" for="form34">Pays</label>
                                       <input type="text" name="pays" value="{{$event->pays}}" id="form34" class="form-control validate">    
                                   </div>
-                                  
-                          
+                                   
                               </div>
                                   <div class="modal-footer d-flex justify-content-center">
-                                      <button type="submit" class="btn btn-secondary"> MODIFIER <i class="fas fa-paper-plane-o ml-1"></i></button>
+                                      <button type="submit" class="btn btn-secondary"> MODIFIER</button>
                                       <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> ANNULER <i class="fas fa-paper-plane-o ml-1"></i></button>
                                   </div>
                           </form>
