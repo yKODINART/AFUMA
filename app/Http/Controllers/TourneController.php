@@ -15,9 +15,9 @@ class TourneController extends Controller
                 $request->validate([
                     'nom',
                     'mois'=> 'required',
-                    'debut',
-                    'fin',
-                    'date'
+                    'debut' => 'required',
+                    'fin' => 'required',
+                    'annee'
                 ]);
 
                 Tournees::insert([
@@ -25,13 +25,13 @@ class TourneController extends Controller
                     'mois' => $request->mois,
                     'debut' => $request->debut,
                     'fin' => $request->fin,
-                    'date' => $request->date
+                    'annee' => $request->annee
                 ]);
 
         return redirect()->back()->with('flash_message_success','Tournée ajoutée avec succès');
             }  else 
         {
-        return redirect('/admin/blogs')->with('flash_message_error','Echec enregistrement!');
+        return redirect('/admin/tournes')->with('flash_message_error','Echec enregistrement!');
         }
     }
 
@@ -53,23 +53,25 @@ class TourneController extends Controller
         if ($request->isMethod('post')) {
            
             $request->validate([
-                'nom' => 'required',
+                'nom' ,
                 'mois'=> 'required',
                 'debut'=> 'required',
-                'fin'=> 'required'
+                'fin'=> 'required',
+                'annee'
             ]);
           
                 Tournees::where(['id' => $idtourne])->update([
                     'nom' => $request->nom,
                     'mois' => $request->mois,
                     'debut' => $request->debut,
-                    'fin' => $request->fin
+                    'fin' => $request->fin,
+                    'annee' => $request->annee
                 ]);
 
             return redirect()->back()->with('flash_message_success','Mise a jour éffectué');
         } 
 
-        return redirect('/admin/blogs')->with('flash_message_error','Echec! Un problème est survenu.');
+        return redirect('/admin/tournes')->with('flash_message_error','Echec! Un problème est survenu.');
 
     }
 

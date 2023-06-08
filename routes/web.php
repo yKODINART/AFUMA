@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::match(['get', 'post'], '/', 'App\Http\Controllers\IndexController@index');
 
 Route::get('/afuma/about', function () { return view('site.about'); });
-Route::get('/afuma/event', function () { return view('site.event'); });
+Route::match(['get', 'post'], '/afuma/event', 'App\Http\Controllers\EvenementController@index');
 Route::get('/afuma/spectacle', function () {return view('site.spectacle');}); 
 Route::match(['get', 'post'], '/afuma/galerie', 'App\Http\Controllers\GalerieController@index');
 Route::get('/afuma/blog', function () {return view('site.blog');});

@@ -34,13 +34,16 @@ Agenda
         <div class="col-12">
             <div class="schedule-tab">
                 <ul class="nav nav-pills text-center">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#nov20" data-bs-toggle="pill">
-                        MAI
-                        <span>06 AU 26 MAI</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
+                    @foreach ($events as $event)
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#nov20" data-bs-toggle="pill">
+                                {{$event->mois}}
+                                <span>{{$event->date}} {{$event->mois}}</span>
+                            </a>
+                        </li>
+                    @endforeach
+                 
+                  {{-- <li class="nav-item">
                     <a class="nav-link" href="#nov21" data-bs-toggle="pill">
                         JUIN
                         <span>03 AU 26 JUIN</span>
@@ -63,7 +66,7 @@ Agenda
                         SEPTEMBRE
                         <span>15 AU 17 SEPT</span>
                     </a>
-                  </li>
+                  </li> --}}
                 </ul>
             </div>
             <div class="schedule-contents bg-schedule">
@@ -85,10 +88,10 @@ Agenda
                                   </div>
                                   <!-- VILLE -->
                                   <div class="speaker">
-                                    <span class="name">ARRIGORIAGA</span>
+                                    <span class="name">{{$event->lieu}}</span>
                                   </div>
                                   <!-- PAYS -->
-                                  <div class="subject">ESPAGNE</div>
+                                  <div class="subject">{{$event->pays}}</div>
                               </div>
                           </li>
                             <!-- Schedule Details -->

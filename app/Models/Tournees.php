@@ -23,7 +23,7 @@ class Tournees extends Model
        'mois',
        'debut',
        'fin',
-       'date'
+       'annee'
     ];
 
    

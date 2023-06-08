@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('mois')->nullable();
             $table->integer('debut')->nullable();
             $table->integer('fin')->nullable();
-            $table->integer('date')->nullable();
+            $table->integer('annee')->nullable();
             $table->timestamps();
         });
     }

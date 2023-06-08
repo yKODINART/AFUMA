@@ -129,8 +129,8 @@
 
                     <div class="md-form mb-2">
                       <i class="fas fa-envelope prefix grey-text"></i>
-                      <label data-error="wrong" data-success="right" for="form34">Date Unique Tournée</label>
-                      <input type="text" name="date" id="form34" class="form-control validate">    
+                      <label data-error="wrong" data-success="right" for="form34">Anneé Tournée</label>
+                      <input type="number" name="annee" id="form34" class="form-control validate">    
                     </div>
                     
                  </div>
@@ -185,7 +185,7 @@
                             <span class="text-xs font-weight-bold"> {{$tourne->fin}}  </span>
                           </td>
                           <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold"> {{$tourne->date}}  </span>
+                            <span class="text-xs font-weight-bold"> {{$tourne->annee}}  </span>
                           </td>
                         
                         <td>
@@ -240,7 +240,7 @@
                                   <div class="md-form mb-2">
                                     <i class="fas fa-envelope prefix grey-text"></i>
                                     <label data-error="wrong" data-success="right" for="form34">Date Unique Tournée</label>
-                                    <input type="text" name="date" value="{{$tourne->date}}" id="form34" class="form-control validate">    
+                                    <input type="number" name="annee" value="{{$tourne->annee}}" id="form34" class="form-control validate">    
                                 </div>
                                   
                               

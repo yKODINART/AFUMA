@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 
 class EvenementController extends Controller
 {
-   
+    public function index(){
+        $events = Evenements::all();
+        return view('site.event', compact('events'));
+    }
 
     public function store(Request $request){
 
