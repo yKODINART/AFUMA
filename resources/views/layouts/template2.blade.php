@@ -130,7 +130,7 @@
 				icon: 'success',
 				title: "{{ session('flash_message_success') }}",
 				showConfirmButton: false,
-				timer: 5000
+				timer: 5 000
 				});
 				</script>
 			@endif

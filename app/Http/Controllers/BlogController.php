@@ -12,6 +12,12 @@ class BlogController extends Controller
         return view('site.blog', compact('blogs'));
     }
 
+    public function detail($iddetail){
+        $blogs = Blogs::where(['id' => $iddetail])->first();
+        $blog_recents = Blogs::orderBy('created_at', 'desc')->get(); 
+        return view('site.blog_detail', compact('blogs', 'blog_recents'));
+    }
+
     public function store(Request $request){
 
         if ($request->isMethod('post')) {

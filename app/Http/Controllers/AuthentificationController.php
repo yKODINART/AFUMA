@@ -22,7 +22,7 @@ class AuthentificationController extends Controller
 
                   
                      
-                   return redirect('/admin/dashboard')->with('flash_message_success', 'Connecté : '.$currentAdmin->name);;
+                   return redirect('/admin/dashboard')->with('flash_message_success', 'Connecté : '.$currentAdmin->name);
 
                 } else {
                     return redirect()->back()->with('flash_message_error', 'Votre mot de passe est invalide');

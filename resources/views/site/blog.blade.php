@@ -41,56 +41,11 @@ Blogs
                         </p>
                         <h5 class="mb-3">{{$blog->titre}}</h5>
                         <p>{{$blog->sous_titre}}</p>
-                        <a class="btn-slide mt-2" href="blog-detail.php"><i class="fa fa-arrow-right"></i><span>Lire Plus</span></a>
+                        <a class="btn-slide mt-2" href="/afuma/blog_detail/{{$blog->id}}"><i class="fa fa-arrow-right"></i><span>Lire Plus</span></a>
                     </div>
                </div>
             @endforeach
-            {{-- <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s"
-                style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                <div class="service-item p-4">
-                    <div class="overflow-hidden mb-4 position-relative">
-                        <img class="img-fluid" src="{{asset('assets2/img/home-1.jpg')}}" alt="">
-                    </div>
-                    <p class="blog-meta">
-                        <span class="author me-2"><i class="fa fa-user text-primary"></i> Afuma</span>
-                        <span class="date"><i class="fas fa-calendar text-primary"></i> 27 Décembre 2019</span>
-                    </p>
-                    <h5 class="mb-3">Interventions dans les écoles</h5>
-                    <p>La tradition séculaire des échasses traditionnelles est un des fleurons de la culture Ifé...</p>
-                    <a class="btn-slide mt-2" href="blog-detail.php"><i class="fa fa-arrow-right"></i><span>Lire Plus</span></a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s"
-                style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-                <div class="service-item p-4">
-                    <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="{{asset('assets2/img/home-2.jpg')}}" alt="">
-                    </div>
-                    <p class="blog-meta">
-                        <span class="author me-2"><i class="fa fa-user text-primary"></i> Afuma</span>
-                        <span class="date"><i class="fas fa-calendar text-primary"></i> 27 Décembre 2019</span>
-                    </p>
-                    <h4 class="mb-3">Fabrication des échasses</h4>
-                    <p>Ces artistes, appartiennent à des familles d'échassiers,...</p>
-                    <a class="btn-slide mt-2" href="blog-detail2.php"><i class="fa fa-arrow-right"></i><span>Lire Plus</span></a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s"
-                style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
-                <div class="service-item p-4">
-                    <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="{{asset('assets2/img/home-3.jpg')}}" alt="">
-                    </div>
-                    <p class="blog-meta">
-                        <span class="author me-2"><i class="fa fa-user text-primary"></i> Afuma</span>
-                        <span class="date"><i class="fas fa-calendar text-primary"></i> 27 Décembre 2019</span>
-                    </p>
-                    <h4 class="mb-3">Notre Histoire</h4>
-                    <p>Afuma est le nom d'une fougère qui pousse sur les arbres,...</p>
-                    <a class="btn-slide mt-2" href="blog-detail3.php"><i class="fa fa-arrow-right"></i><span>Lire
-                            Plus</span></a>
-                </div>
-            </div> --}}
+      
         </div>
     </div>
 </div>

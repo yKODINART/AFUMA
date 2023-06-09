@@ -206,52 +206,8 @@
    
   </aside>
 
- {{-- <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Obtenez tous les liens de la barre de navigation
-        var navLinks = document.querySelectorAll('.navbar-nav a');
+  
 
-        // Parcourir tous les liens
-        navLinks.forEach(function(link) {
-            // Ajoutez un écouteur d'événement pour le clic sur chaque lien
-            link.addEventListener('click', function(event) {
-                // Supprimez la classe "active" de tous les liens
-                navLinks.forEach(function(navLink) {
-                    navLink.classList.remove('active');
-                });
-                
-                // Ajoutez la classe "active" au lien cliqué
-                link.classList.add('active');
-                  
-                // Mettez à jour l'URL dans la barre d'adresse sans rechargement de la page
-                history.pushState(null, null, link.href);
-                
-                // Appliquez le style CSS à la classe "active"
-                // applyActiveLinkStyle();
-            });
-        });
-
-        // Appliquez le style CSS au lien actif lors du chargement initial de la page
-        applyActiveLinkStyle();
-
-        // Fonction pour appliquer le style CSS à la classe "active"
-        function applyActiveLinkStyle() {
-            // Obtenez l'URL actuelle
-            var currentUrl = window.location.pathname;
-
-            // Parcourir tous les liens
-            navLinks.forEach(function(link) {
-                // Vérifiez si l'URL du lien correspond à l'URL actuelle
-                if (link.getAttribute('href') === currentUrl) {
-                    // Ajoutez la classe "active" au lien correspondant à l'URL actuelle
-                    link.classList.add('active');
-                } else {
-                    // Supprimez la classe "active" des autres liens
-                    link.classList.remove('active');
-                }
-            });
-        }
-    });
-</script>  --}}
+ 
 
  

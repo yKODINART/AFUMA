@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class EvenementController extends Controller
 {
     public function index(){
-        $tournes = Tournees::all();
+        $tournes = Tournees::orderBy('created_at', 'desc')->get(); 
         $events = DB::table('evenements')->join('tournees','evenements.tournee_id', '=', 'tournees.id')->select('evenements.id as id',
         'evenements.tournee_id as tournee_id',
         'evenements.titre as titre',
@@ -23,9 +23,17 @@ class EvenementController extends Controller
         'tournees.mois as mois_tournee',
         'tournees.debut as debut',
         'tournees.fin as fin',
-        'tournees.annee as annee_tournee')->get(); 
-        return view('site.event', compact('tournes', 'events'));
+        'tournees.annee as annee_tournee')->orderBy('evenements.created_at', 'desc')->get(); 
+
+        $groupedEvents = $this->groupEventsByTournee($events);
+
+        return view('site.event', compact('tournes', 'events', 'groupedEvents'));
     }
+
+    private function groupEventsByTournee($events)
+{
+    return $events->groupBy('tournee_id');
+}
 
     public function store(Request $request){
 
@@ -150,5 +158,9 @@ class EvenementController extends Controller
     public function details($idevent){
         $events = Evenements::where(['id' => $idevent])->first();
         return view('evenements.index', compact('events'));
+    }
+
+    public function filter($idtourne){
+
     }
 }

@@ -24,6 +24,7 @@ Route::match(['get', 'post'], '/afuma/event', 'App\Http\Controllers\EvenementCon
 Route::get('/afuma/spectacle', function () {return view('site.spectacle');}); 
 Route::match(['get', 'post'], '/afuma/galerie', 'App\Http\Controllers\GalerieController@index');
 Route::match(['get', 'post'], '/afuma/blog', 'App\Http\Controllers\BlogController@index');
+Route::match(['get', 'post'], '/afuma/blog_detail/{id}', 'App\Http\Controllers\BlogController@detail');
 Route::get('/afuma/presse', function () { return view('site.presse'); });
 Route::get('/afuma/contact', function () {return view('site.contact');});
 Route::get('/blog_detail', function () {return view('site.blog_detail');});

@@ -108,16 +108,16 @@
     <!-- End Navbar -->
     <div class="container-fluid py-4">
       <div class="row mb-xl-4">
-        {{-- <div class="col-xl-4 col-sm-6 mb-xl-4 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-4 mb-4">
           <div class="card">
             <div class="card-body p-3">
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Visiteurs</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Tournées</p>
                     <h5 class="font-weight-bolder mb-0">
-                      0
-                      <span class="text-success text-sm font-weight-bolder">+0%</span>
+                      {{ $tournes }}
+                     
                     </h5>
                   </div>
                 </div>
@@ -129,7 +129,7 @@
               </div>
             </div>
           </div>
-        </div> --}}
+        </div>
         <div class="col-xl-4 col-sm-6 mb-xl-4 mb-4">
           <div class="card">
             <div class="card-body p-3">
@@ -139,7 +139,7 @@
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Evènements</p>
                     <h5 class="font-weight-bolder mb-0">
                       {{ $events }}
-                      <span class="text-danger text-sm font-weight-bolder">-0%</span>
+                     
                     </h5>
                   </div>
                 </div>
@@ -161,7 +161,7 @@
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Galeries</p>
                     <h5 class="font-weight-bolder mb-0">
                      {{ $galeries }}
-                      <span class="text-success text-sm font-weight-bolder">+0%</span>
+                     
                     </h5>
                   </div>
                 </div>
@@ -183,7 +183,7 @@
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Blog/Articles</p>
                     <h5 class="font-weight-bolder mb-0">
                      {{ $blogs }}
-                      <span class="text-success text-sm font-weight-bolder">+0%</span>
+                      
                     </h5>
                   </div>
                 </div>
@@ -205,7 +205,7 @@
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Utilisateurs</p>
                     <h5 class="font-weight-bolder mb-0">
                      {{ $users }}
-                      <span class="text-success text-sm font-weight-bolder">+0%</span>
+                      
                     </h5>
                   </div>
                 </div>
@@ -227,14 +227,9 @@
           <div class="card">
             <div class="card-header pb-0">
               <div class="row">
-                <div class="col-lg-6 col-7">
-                  <h6>Evènements</h6>
-                  <p class="text-sm mb-0">
-                    <i class="fa fa-check text-info" aria-hidden="true"></i>
-                    <span class="font-weight-bold ms-1">30 achevés</span> Ce mois
-                  </p>
+                <div class="col-lg-12 col-7">
+                  <h6>EVENEMENTS</h6> 
                 </div>
-               
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -381,9 +376,9 @@
             </div>
           </div>
         </div>
-       
+      
       </div>
-       <br> <br> <br> <br> <br>
+       <br> <br> <br> <br> 
       <footer class="footer pt-3  ">
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
@@ -411,7 +406,8 @@
         </div>
       </footer>
     </div>
-  </main>
+  </main> 
+
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
       <i class="fa fa-cog py-2"> </i>
