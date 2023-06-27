@@ -37,7 +37,7 @@ Blogs
                         </div>
                         <p class="blog-meta">
                             <span class="author me-2"><i class="fa fa-user text-primary"></i> Afuma</span>
-                            <span class="date"><i class="fas fa-calendar text-primary"></i> {{ textDate($blog->date)}}</span>
+                            <span class="date"><i class="fas fa-calendar text-primary"></i> {{formatDate2($blog->date)}}</span>
                         </p>
                         <h5 class="mb-3">{{$blog->titre}}</h5>
                         <p>{{$blog->sous_titre}}</p>

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::match(['get', 'post'], '/', 'App\Http\Controllers\IndexController@index');
 
-Route::get('/afuma/about', function () { return view('site.about'); });
+Route::match(['get', 'post'], '/afuma/about', 'App\Http\Controllers\TeamController@index');
 Route::match(['get', 'post'], '/afuma/event', 'App\Http\Controllers\EvenementController@index');
 Route::get('/afuma/spectacle', function () {return view('site.spectacle');}); 
 Route::match(['get', 'post'], '/afuma/galerie', 'App\Http\Controllers\GalerieController@index');
@@ -64,6 +64,11 @@ Route::prefix('admin')->group(function () {
         Route::match(['get', 'post'], '/tournes/store', 'App\Http\Controllers\TourneController@store');
         Route::match(['get', 'post'], '/tournes/edit/{id}', 'App\Http\Controllers\TourneController@edit');
         Route::match(['get', 'post'], '/tournes/delete/{id}', 'App\Http\Controllers\TourneController@delete');
+
+        Route::match(['get', 'post'], '/teams', 'App\Http\Controllers\TeamController@show');
+        Route::match(['get', 'post'], '/teams/store', 'App\Http\Controllers\TeamController@store');
+        Route::match(['get', 'post'], '/teams/edit/{id}', 'App\Http\Controllers\TeamController@edit');
+        Route::match(['get', 'post'], '/teams/delete/{id}', 'App\Http\Controllers\TeamController@delete');
 
       
         Route::match(['get', 'post'], '/users', 'App\Http\Controllers\UserController@show');

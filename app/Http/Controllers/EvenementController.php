@@ -10,7 +10,29 @@ use Illuminate\Support\Facades\DB;
 class EvenementController extends Controller
 {
     public function index(){
+        
         $tournes = Tournees::orderBy('created_at', 'desc')->get(); 
+
+        // Tri des tournées par ordre des mois de janvier à décembre
+        $sortedTournes = $tournes->sortBy(function ($tournee) {
+            $mois = [
+                'JANVIER' => 1,
+                'FEVRIER' => 2,
+                'MARS' => 3,
+                'AVRIL' => 4,
+                'MAI' => 5,
+                'JUIN' => 6,
+                'JUILLET' => 7,
+                'AOUT' => 8,
+                'SEPTEMBRE' => 9,
+                'OCTOBRE' => 10,
+                'NOVEMBRE' => 11,
+                'DECEMBRE' => 12,
+            ];
+
+            return $mois[$tournee->mois];
+        });
+
         $events = DB::table('evenements')->join('tournees','evenements.tournee_id', '=', 'tournees.id')->select('evenements.id as id',
         'evenements.tournee_id as tournee_id',
         'evenements.titre as titre',
@@ -27,13 +49,12 @@ class EvenementController extends Controller
 
         $groupedEvents = $this->groupEventsByTournee($events);
 
-        return view('site.event', compact('tournes', 'events', 'groupedEvents'));
+        return view('site.event', compact('tournes', 'events', 'groupedEvents', 'sortedTournes'));
     }
 
-    private function groupEventsByTournee($events)
-{
-    return $events->groupBy('tournee_id');
-}
+    private function groupEventsByTournee($events){
+         return $events->groupBy('tournee_id');
+    }
 
     public function store(Request $request){
 

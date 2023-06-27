@@ -35,7 +35,7 @@ Agenda
            
             <div class="schedule-tab">
                 <ul class="nav nav-pills text-center">
-                    @foreach ($tournes as $tourne)
+                    @foreach ($sortedTournes as $tourne)
                         <li class="nav-item">
                             <a class="nav-link " href="#tab-{{$tourne->id}}" data-bs-toggle="pill">
                                 {{$tourne->mois}}
@@ -57,10 +57,10 @@ Agenda
                           </li>
                           <!-- Schedule Details -->
                           @foreach ($tournes as $tourne) 
-                          <div class="tab-pane fade  schedule-item"  id="tab-{{$tourne->id}}">
+                          <div class="tab-pane fade active schedule-item tourne-item"  id="tab-{{$tourne->id}}">
                           @foreach ($events as $event)
                                 @if ($event->tournee_id == $tourne->id)
-                                        <li class="schedule-details">
+                                        <li class="schedule-details event-item {{$tourne->id}}">
                                             <div class="block">
                                                 <!-- DATE -->
                                                 <div class="time">
@@ -144,9 +144,23 @@ Agenda
 </div>
 
 <!-- Recent event end -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+      $('.nav-link').on('shown.bs.tab', function(e) {
+        // Récupérer l'ID de la tournée sélectionnée
+        var tourneId = $(e.target).attr('href').replace('#tab-', '');
+  
+        // Cacher tous les éléments de la classe 'event-item'
+        $('.event-item').hide();
+  
+        // Afficher uniquement les éléments 'event-item' correspondants à la tournée sélectionnée
+        $('.event-item.' + tourneId).show();
+      });
+    });
+  </script>
 
-
-
+{{-- 
 <script>
     $(document).ready(function() {
         $('.nav-link').on('click', function(e) {
@@ -158,7 +172,7 @@ Agenda
             $(target).addClass('show active');
         });
     });
-</script>
+</script> --}}
 
 
 @endsection

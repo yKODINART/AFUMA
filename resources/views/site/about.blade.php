@@ -175,20 +175,22 @@ A Propos
             <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Notre Equipe</div>
             <h1 class="display-6 mb-5">Découvrez nos soldats !</h1>
         </div>
-        <div class="row g-4">
+        <div class="row g-4 mt-3">
+            @foreach ($teams as $team) 
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="team-item position-relative rounded overflow-hidden">
                     <div class="overflow-hidden">
-                        <img class="img-fluid w-100" src="{{asset('assets2/img/team/team-1.jpg')}}" alt=""
+                        <img class="img-fluid w-100" src="{{asset('assets/teams/'.$team->photo)}}" alt=""
                             style="width: 180px; height: 150px; object-fit: cover;">
                     </div>
                     <div class="team-text bg-light text-center p-4">
-                        <h5>AYENA Adébayo</h5>
-                        <p class="text-primary">Orara</p>
+                        <h5>{{$team->nom}} {{$team->prenoms}}</h5>
+                        <p class="text-primary">{{$team->surnom}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            @endforeach
+            {{-- <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="team-item position-relative rounded overflow-hidden">
                     <div class="overflow-hidden">
                         <img class="img-fluid w-100" src="{{asset('assets2/img/team/team-2.jpg')}}" alt=""
@@ -225,10 +227,10 @@ A Propos
 
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
-        <div class="row g-4 mt-3">
+        {{-- <div class="row g-4 mt-3">
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="team-item position-relative rounded overflow-hidden">
                     <div class="overflow-hidden">
@@ -281,7 +283,7 @@ A Propos
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 <!-- Team End -->

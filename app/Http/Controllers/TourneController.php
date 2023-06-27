@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evenements;
 use App\Models\Tournees;
 use Illuminate\Http\Request;
 
@@ -42,7 +43,9 @@ class TourneController extends Controller
 
     public function delete($idtourne){
 
-        Tournees::where(['id' => $idtourne])->delete([]);
+        Evenements::where('tourné_id', $idtourne)->delete();
+
+        Tournees::where(['id' ,  $idtourne])->delete();
 
         return redirect()->back()->with('flash_message_success', 'Tournée supprimée avec succès!');
     }
@@ -74,5 +77,7 @@ class TourneController extends Controller
         return redirect('/admin/tournes')->with('flash_message_error','Echec! Un problème est survenu.');
 
     }
+
+
 
 }

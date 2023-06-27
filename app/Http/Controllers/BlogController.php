@@ -76,6 +76,7 @@ class BlogController extends Controller
 
         $blogs = Blogs::where(['id' => $idblog])->first();
         if ($request->isMethod('post')) {
+
             $request->validate([
                 'image' => 'required',
                 'description'=> 'required',
@@ -93,9 +94,7 @@ class BlogController extends Controller
                
             }
 
-            // $date_text = date('d F Y', strtotime(str_replace('/', '-', $request->date)));
-
-      
+          
                 Blogs::where(['id' => $idblog])->update([
                     'image' => $imagePath,
                     'description' => $request->description,

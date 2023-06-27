@@ -255,6 +255,7 @@ Accueil
             <h1 class="mb-5">Découvrez Nos Actualités</h1>
         </div>
         <div class="row g-4">
+
             @foreach ($blogs as $blog)
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s"
                     style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
@@ -263,16 +264,15 @@ Accueil
                             <img class="img-fluid" src="{{asset($blog->image)}}" alt="">
                         </div>
                         <p class="blog-meta">
-                            <span class="author me-2"><i class="fa fa-user text-primary"></i> Afuma</span>
-                            <span class="date"><i class="fas fa-calendar text-primary"></i> {{ textDate($blog->date)}}</span>
+                            <span class="author me-2"><i class="fa fa-user text-primary"></i> Afuma </span>
+                            <span class="date"><i class="fas fa-calendar text-primary"></i> {{ formatDate2($blog->date)}}</span>
                         </p>
                         <h5 class="mb-3">{{$blog->titre}}</h5>
                         <p>{{$blog->sous_titre}}</p>
-                        <a class="btn-slide mt-2" href="blog-detail.php"><i class="fa fa-arrow-right"></i><span>Lire Plus</span></a>
+                        <a class="btn-slide mt-2" href="/afuma/blog_detail/{{$blog->id}}"><i class="fa fa-arrow-right"></i><span>Lire Plus</span></a>
                     </div>
                </div>
             @endforeach
-       
 
         </div>
     </div>

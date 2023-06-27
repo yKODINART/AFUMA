@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tournees extends Model
+class Teams extends Model
 {
     use HasFactory;
-
-    protected $table = 'tournees';
+    protected $table = 'teams';
 
     /**
     * The primary key for the model.
@@ -20,15 +19,8 @@ class Tournees extends Model
 
     protected $fillable = [
        'nom',
-       'mois',
-       'debut',
-       'fin',
-       'annee'
+       'prenoms',
+       'surnom',
+       'photo'
     ];
-
-    public function evenements()
-    {
-        return $this->hasMany(Evenement::class);
-    }
-   
 }

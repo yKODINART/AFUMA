@@ -12,11 +12,11 @@ Blogs Details
             <!-- Blog Detail Start -->
             <div class="pb-3">
                 <div class="position-relative">
-                    <img class="img-fluid w-100" src="{{asset($blogs->image)}}" alt="">
+                    <img class="img-fluid " width="100" src="{{asset($blogs->image)}}" alt="" style="width:100%;height:570px;object-fit:cover;">
                     <div class="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center rounded-1 "
                         style="width: 100px; height: 80px; bottom: -30px; right: 30px;">
                         {{-- <h4 class="font-weight-bold mb-n1">01</h4> --}}
-                        <small class="text-white text-uppercase"> {{ textDate($blogs->date)}}</small>
+                        <small class="text-white text-uppercase"> {{ formatDate2($blogs->date)}}</small>
                         {{-- <small class="text-white text-uppercase">2023</small> --}}
                     </div>
                 </div>

@@ -10,7 +10,7 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">AFUMA</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Tournées</h6>
+          <h6 class="font-weight-bolder mb-0">Equipes</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -94,61 +94,40 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header text-center">
-              <h4 class="modal-title w-100 font-weight-bold">Ajouter une Tournée</h4>
+              <h4 class="modal-title w-100 font-weight-bold">Ajouter un membre de l'équipe</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="/admin/tournes/store" method="post" enctype="multipart/form-data">
+            <form action="/admin/teams/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body mx-3">
 
                     <div class="md-form mb-2">
                         <i class="fas fa-envelope prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="form34">Nom (Optionnel) </label>
+                        <label data-error="wrong" data-success="right" for="form34">Nom</label>
                         <input type="text" name="nom" id="form34" class="form-control validate">    
+                    </div>
+
+                    <div class="md-form mb-2">
+                        <i class="fas fa-envelope prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="form34">Prénoms</label>
+                        <input type="text" name="prenoms" id="form34" class="form-control validate">    
                     </div>
                     
                     <div class="md-form mb-2">
                       <i class="fas fa-envelope prefix grey-text"></i>
-                      <label data-error="wrong" data-success="right" for="form34">Anneé Tournée</label>
-                      <input type="number" name="annee" id="form34" class="form-control validate">    
-                    </div>
-
-                    <div class="md-form mb-2">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="form34">Mois</label>
-                        <select name="mois" id="form34" class="form-control validate">
-                          <option value="JANVIER">Janvier</option>
-                          <option value="FEVRIER">Fevrier</option>
-                          <option value="MARS">Mars</option>
-                          <option value="AVRIL">Avril</option>
-                          <option value="MAI">Mai</option>
-                           <option value="JUIN">Juin</option>
-                           <option value="JUILLET">Juillet</option>
-                           <option value="AOUT">Aout</option>
-                           <option value="SEPTEMBRE">Septembre</option>
-                           <option value="OCTOBRE">Octobre</option>
-                           <option value="NOVEMBRE">Novembre</option>
-                           <option value="DECEMBRE">Decembre</option>
-                        </select>
-                            
-                    </div>
-                    
-                    <div class="md-form mb-2">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="form34">Debut Tournée</label>
-                        <input type="text" name="debut" id="form34" class="form-control validate">    
-                    </div>
-                    
-                    <div class="md-form mb-2">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="form34">Fin Tournée</label>
-                        <input type="text" name="fin" id="form34" class="form-control validate">    
+                      <label data-error="wrong" data-success="right" for="form34">Surnom</label>
+                      <input type="text" name="surnom" id="form34" class="form-control validate">    
                     </div>
 
                    
-                    
+                    <div class="md-form mb-2">
+                        <i class="fas fa-envelope prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="form34">Image du membre</label>
+                        <input type="file" name="photo" id="form34" class="form-control validate">    
+                    </div>
+                     
                  </div>
                     <div class="modal-footer d-flex justify-content-center">
                         <button type="submit" class="btn btn-secondary"> AJOUTER <i class="fas fa-paper-plane-o ml-1"></i></button>
@@ -168,7 +147,7 @@
             <div class="card-header pb-0">
               <div class="row">
                 <div class="col-lg-6 col-7">
-                  <h4>Tournées</h4> 
+                  <h4>Equipes</h4> 
                 </div>   
               </div>
             </div>
@@ -177,47 +156,42 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr class="align-center">
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Photo</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ANNEE</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Mois</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Debut</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Fin</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Prénoms</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Surnom</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ACTIONS</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($tournes as $tourne)
+                    @foreach ($teams as $team)
                     <tr>
                         <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold">{{$tourne->nom}} </span>
+                            <img width="60" src="{{asset('assets/teams/'.$team->photo)}}" class="text-xs font-weight-bold">
                           </td>
                           <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold"> {{$tourne->annee}}  </span>
+                            <span class="text-xs font-weight-bold">{{$team->nom}}</span>
                           </td>
                           <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold">{{$tourne->mois}}  </span>
+                            <span class="text-xs font-weight-bold">{{$team->prenoms}}</span>
                           </td>
                           <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold"> {{$tourne->debut}} </span>
+                            <span class="text-xs font-weight-bold">{{$team->surnom}}</span>
                           </td>
-                          <td class="align-middle  text-sm">
-                            <span class="text-xs font-weight-bold"> {{$tourne->fin}}  </span>
-                          </td>
-                         
                         
                         <td>
                             <a href="javascript:;">
-                                <i class="fas fa-user-edit  text-sm" data-bs-toggle="modal" data-bs-target="#edittourne{{$tourne->id}}" data-bs-placement="top" title="Edit Profile" style="color: blue;"></i>
+                                <i class="fas fa-user-edit  text-sm" data-bs-toggle="modal" data-bs-target="#editteam{{$team->id}}" data-bs-placement="top" title="Edit Profile" style="color: blue;"></i>
                             </a> &nbsp; 
                             <a href="javascript:;">
-                                <i class="fas fa-trash  text-sm" data-bs-toggle="modal" data-bs-target="#deletetourne{{$tourne->id}}"  data-bs-placement="top" title="Delete Profile" style="color: red;"></i>
+                                <i class="fas fa-trash  text-sm" data-bs-toggle="modal" data-bs-target="#deleteteam{{$team->id}}"  data-bs-placement="top" title="Delete Profile" style="color: red;"></i>
                             </a>
                         </td>
                     </tr>
 
                   
 
-                    <div class="modal fade" id="edittourne{{$tourne->id}}" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editteam{{$team->id}}" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header text-center">
@@ -226,44 +200,34 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <form action="/admin/tournes/edit/{{$tourne->id}}" method="post">
+                          <form action="/admin/teams/edit/{{$team->id}}" method="post">
                               @csrf
                               <div class="modal-body mx-3">
               
                                   <div class="md-form mb-2">
                                       <i class="fas fa-envelope prefix grey-text"></i>
-                                      <label data-error="wrong" data-success="right" for="form34">Nom (Optionnel)</label>
-                                      <input type="text" name="nom" value="{{$tourne->nom}}" id="form34" class="form-control validate">    
+                                      <label data-error="wrong" data-success="right" for="form34">Nom</label>
+                                      <input type="text" name="nom" value="{{$team->nom}}" id="form34" class="form-control validate">    
                                   </div>
 
                                   <div class="md-form mb-2">
                                     <i class="fas fa-envelope prefix grey-text"></i>
-                                    <label data-error="wrong" data-success="right" for="form34">Année Tournée</label>
-                                    <input type="number" name="annee" value="{{$tourne->annee}}" id="form34" class="form-control validate">    
+                                    <label data-error="wrong" data-success="right" for="form34">Prénoms</label>
+                                    <input type="text" name="prenoms" value="{{$team->prenoms}}" id="form34" class="form-control validate">    
                                 </div>
                                   
                                   <div class="md-form mb-2">
                                       <i class="fas fa-envelope prefix grey-text"></i>
-                                      <label data-error="wrong" data-success="right" for="form34">Mois</label>
-                                      <input type="text" name="mois" value="{{$tourne->mois}}" id="form34" class="form-control validate">    
+                                      <label data-error="wrong" data-success="right" for="form34">Surnom</label>
+                                      <input type="text" name="surnom" value="{{$team->surnom}}" id="form34" class="form-control validate">    
                                   </div>
                                   
                                   <div class="md-form mb-2">
                                       <i class="fas fa-envelope prefix grey-text"></i>
-                                      <label data-error="wrong" data-success="right" for="form34">Debut Tournée</label>
-                                      <input type="text" name="debut" value="{{$tourne->debut}}" id="form34" class="form-control validate">    
+                                      <label data-error="wrong" data-success="right" for="form34">Image Equipe</label>
+                                      <input type="file" name="photo" value="{{asset('assets/teams/'.$team->photo)}}" id="form34" class="form-control validate">    
                                   </div>
                                   
-                                  <div class="md-form mb-2">
-                                      <i class="fas fa-envelope prefix grey-text"></i>
-                                      <label data-error="wrong" data-success="right" for="form34">Fin Tournée</label>
-                                      <input type="text" name="fin" value="{{$tourne->fin}}" id="form34" class="form-control validate">    
-                                  </div>
-
-                                 
-                                  
-                              
-                          
                               </div>
                                   <div class="modal-footer d-flex justify-content-center">
                                       <button type="submit" class="btn btn-secondary"> MODIFIER <i class="fas fa-paper-plane-o ml-1"></i></button>
@@ -274,7 +238,7 @@
                       </div>
                     </div>
 
-                    <div class="modal fade" id="deletetourne{{$tourne->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="deleteteam{{$team->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header text-center">
@@ -283,17 +247,15 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                                  <p style="text-align: center"> Confirmer la suppression de la tournée de {{ $tourne->mois }} ?</p>
+                                  <p style="text-align: center"> Confirmer la suppression du membre {{$team->nom}} ?</p>
 
                               <div class="modal-footer d-flex justify-content-center">
-                                  <a href="/admin/tournes/delete/{{$tourne->id}}"><button class="btn btn-secondary"> OUI <i class="fas fa-paper-plane-o ml-1"></i></button></a>
+                                  <a href="/admin/teams/delete/{{$team->id}}"><button class="btn btn-secondary"> OUI <i class="fas fa-paper-plane-o ml-1"></i></button></a>
                                   <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> NON <i class="fas fa-paper-plane-o ml-1"></i></button>
-                              </div>
-                        
+                              </div>                
                         </div>
                       </div>
                     </div>
-
                    @endforeach
                  </tbody>
                 </table>
