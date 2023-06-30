@@ -10,7 +10,7 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">AFUMA</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Blogs</h6>
+          <h6 class="font-weight-bolder mb-0">Images En-Tete</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -65,7 +65,7 @@
                   <div class="nav-wrapper position-relative end-0">
                     <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
                       <li class="nav-item">
-                        <a class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="modal" data-bs-target="#addgalerie" href="javascript:;" role="tab" aria-selected="true">
+                        <a class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="modal" data-bs-target="#addheader" href="javascript:;" role="tab" aria-selected="true">
                           <svg class="text-dark" width="16px" height="16px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                               <g transform="translate(-2319.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -89,51 +89,33 @@
               </div>
             </div>
           </div>
-      <div class="modal fade" id="addgalerie" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      <div class="modal fade" id="addheader" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header text-center">
-              <h4 class="modal-title w-100 font-weight-bold">Ajouter un Blog ou un Article</h4>
+              <h4 class="modal-title w-100 font-weight-bold">Ajouter des images sur l'En-Tete</h4>
               <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="/admin/blogs/store" method="post" enctype="multipart/form-data">
+            <form action="/admin/headers/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body mx-3">
 
                     <div class="md-form mb-2">
                         <i class="fas fa-envelope prefix grey-text"></i>
                         <label data-error="wrong" data-success="right" for="form34">Image</label>
-                        <input type="file" name="image" id="form34" class="form-control validate" accept="image/*" multiple required>
+                        <input type="file" name="header[]" id="form34" class="form-control validate" accept="image/*" multiple required>
                         <p style="color: red;"> images autorisés: jpeg, png, jpg etc....</p>    
                     </div>
                     
                     <div class="md-form mb-2">
                         <i class="fas fa-envelope prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="form34">Description</label>
-                        <input type="text" name="description" id="form34" class="form-control validate">    
+                        <label data-error="wrong" data-success="right" for="form34">Titre</label>
+                        <input type="text" name="titre" id="form34" class="form-control validate">    
                     </div>
-
-                    <div class="md-form mb-2">
-                      <i class="fas fa-envelope prefix grey-text"></i>
-                      <label data-error="wrong" data-success="right" for="form34">Date</label>
-                      <input type="date" name="date" id="form34" class="form-control validate">    
-                  </div>
-
-                  <div class="md-form mb-2">
-                    <i class="fas fa-envelope prefix grey-text"></i>
-                    <label data-error="wrong" data-success="right" for="form34">Titre</label>
-                    <input type="text" name="titre" id="form34" class="form-control validate">    
-                </div>
-
-                <div class="md-form mb-2">
-                  <i class="fas fa-envelope prefix grey-text"></i>
-                  <label data-error="wrong" data-success="right" for="form34">Sous-Titre</label>
-                  <input type="text" name="sous_titre" id="form34" class="form-control validate">    
-              </div>
-                    
+                   
                  </div>
                     <div class="modal-footer d-flex justify-content-center">
                         <button type="submit" class="btn btn-secondary"> AJOUTER <i class="fas fa-paper-plane-o ml-1"></i></button>
@@ -151,7 +133,7 @@
             <div class="card-header pb-0">
               <div class="row">
                 <div class="col-lg-6 col-7">
-                  <h4>Blogs</h4> 
+                  <h4>HEADERS</h4> 
                 </div>   
               </div>
             </div>
@@ -160,46 +142,40 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr class="align-center">
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Images</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Titre</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Sous-Titre</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ACTIONS</th>
                   </tr>
                   </thead>
                   <tbody>
-                    @foreach ($blogs as $blog)
+                    @foreach ($headers as $header)
                           <tr>
-                              <td class="align-middle  text-sm">
-                                  <span class="text-xs font-weight-bold">{{$blog->date}}  </span>
-                              </td>
+                             
                               <td>
                                   <div class="avatar-group mt-2">
                                       <a href="javascript:;" class="avatar avatar-xs" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                                        <img src="{{asset($blog->image)}}" alt="user6">
+                                        <img src="{{asset($header->header)}}" alt="user6">
                                       </a>
                                   </div>
                               </td>
                               <td class="align-middle  text-sm">
-                                  <span class="text-xs font-weight-bold">{{$blog->titre}}  </span>
+                                  <span class="text-xs font-weight-bold">{{$header->titre}}  </span>
                               </td>
-                              <td class="align-middle  text-sm">
-                                  <span class="text-xs font-weight-bold">{{$blog->sous_titre}}  </span>
-                              </td>
+                            
                             <td>
                                 <a href="javascript:;">
-                                  <i class="fas fa-info text-primary text-sm" data-bs-toggle="modal" data-bs-target="#infoblog{{$blog->id}}" data-bs-placement="top" title="Info blog"></i>
+                                  <i class="fas fa-info text-primary text-sm" data-bs-toggle="modal" data-bs-target="#infoheader{{$header->id}}" data-bs-placement="top" title="Info header"></i>
                                 </a> &nbsp;
                                 <a href="javascript:;">
-                                  <i class="fas fa-user-edit  text-sm" data-bs-toggle="modal" data-bs-target="#editblog{{$blog->id}}" data-bs-placement="top" title="Edit blog" style="color: blue;"></i>
+                                  <i class="fas fa-user-edit  text-sm" data-bs-toggle="modal" data-bs-target="#editheader{{$header->id}}" data-bs-placement="top" title="Edit header" style="color: blue;"></i>
                                 </a> &nbsp;
                                 <a href="javascript:;">
-                                  <i class="fas fa-trash  text-sm" data-bs-toggle="modal" data-bs-target="#deleteblog{{$blog->id}}"  data-bs-placement="top" title="Delete blog" style="color: red;"></i>
+                                  <i class="fas fa-trash  text-sm" data-bs-toggle="modal" data-bs-target="#deleteheader{{$header->id}}"  data-bs-placement="top" title="Delete header" style="color: red;"></i>
                                 </a>
                             </td>
                           </tr>
 
-                          <div class="modal fade" id="infoblog{{$blog->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal fade" id="infoheader{{$header->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header text-center">
@@ -210,15 +186,11 @@
                                 </div>
                                           <div class="avatar-group mt-2">
                                              
-                                              <img style="width:500px; height:200px;object-fit:cover;" src="{{asset($blog->image)}}" alt="user6">
+                                              <img style="width:500px; height:200px;object-fit:cover;" src="{{asset($header->header)}}" alt="user6">
                                              
                                           </div>
-                                          <h3 class="modal-title w-100 font-weight-bold text-center">{{ $blog->titre }} </h3>
-                                                   <p style="text-align: center">{{ $blog->sous_titre }} </p> 
-                        
-                                                    <p> Date :  {{ $blog->date }} </p> 
-                                         
-                                                    <p> {{ $blog->description }} </p> 
+                                          <h3 class="modal-title w-100 font-weight-bold text-center">{{ $header->titre }} </h3>
+                                                  
                                   
                                     <div class="modal-footer d-flex justify-content-center">
                                         <button class="btn btn-primary" data-bs-dismiss="modal"> FERMER <i class="fas fa-paper-plane-o ml-1"></i></button>
@@ -228,48 +200,32 @@
                             </div>
                           </div>
 
-                          <div class="modal fade" id="editblog{{$blog->id}}" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal fade" id="editheader{{$header->id}}" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header text-center">
-                                  <h4 class="modal-title w-100 font-weight-bold">Editer le Blog</h4>
+                                  <h4 class="modal-title w-100 font-weight-bold">Editer le header</h4>
                                   <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
-                                <form action="/admin/blogs/edit/{{$blog->id}}" method="post">
+                                <form action="/admin/headers/edit/{{$header->id}}" method="post">
                                     @csrf
                                     <div class="modal-body mx-3">
                         
                                         <div class="md-form mb-2">
                                             <i class="fas fa-envelope prefix grey-text"></i>
                                             <label data-error="wrong" data-success="right" for="form34">Image</label>
-                                            <input type="file" name="image" value="{{$blog->image}}" id="form34" class="form-control validate" accept="image/*" multiple>    
+                                            <input type="file" name="image" value="{{$header->header}}" id="form34" class="form-control validate" accept="image/*" multiple>    
                                         </div>
-                                        
-                                        <div class="md-form mb-2">
-                                            <i class="fas fa-envelope prefix grey-text"></i>
-                                            <label data-error="wrong" data-success="right" for="form34">Description</label>
-                                            <input type="text" name="description" value="{{$blog->description}}" id="form34" class="form-control validate">    
-                                        </div>
-                        
-                                        <div class="md-form mb-2">
-                                          <i class="fas fa-envelope prefix grey-text"></i>
-                                          <label data-error="wrong" data-success="right" for="form34">Date</label>
-                                          <input type="date" name="date" value="{{$blog->date}}" id="form34" class="form-control validate">    
-                                      </div>
-                        
+                                   
                                       <div class="md-form mb-2">
                                           <i class="fas fa-envelope prefix grey-text"></i>
                                           <label data-error="wrong" data-success="right" for="form34">Titre</label>
-                                          <input type="text" name="titre" value="{{$blog->titre}}" id="form34" class="form-control validate">    
+                                          <input type="text" name="titre" value="{{$header->titre}}" id="form34" class="form-control validate">    
                                       </div>
                         
-                                      <div class="md-form mb-2">
-                                          <i class="fas fa-envelope prefix grey-text"></i>
-                                          <label data-error="wrong" data-success="right" for="form34">Sous_Titre</label>
-                                          <input type="text" name="sous_titre" value="{{$blog->sous_titre}}" id="form34" class="form-control validate">    
-                                      </div>
+                                    
                                     </div>
                                         <div class="modal-footer d-flex justify-content-center">
                                             <button type="submit" class="btn btn-secondary"> MODIFIER <i class="fas fa-paper-plane-o ml-1"></i></button>
@@ -280,7 +236,7 @@
                             </div>
                           </div>
 
-                          <div class="modal fade" id="deleteblog{{$blog->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal fade" id="deleteheader{{$header->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header text-center">
@@ -289,10 +245,10 @@
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
-                                        <p> Confirmer la suppression du blog {{$blog->titre}} ?</p>
+                                        <p> Confirmer la suppression du header {{$header->titre}} ?</p>
                                   
                                     <div class="modal-footer d-flex justify-content-center">
-                                        <a href="/admin/blogs/delete/{{$blog->id}}"><button class="btn btn-secondary"> OUI <i class="fas fa-paper-plane-o ml-1"></i></button></a>
+                                        <a href="/admin/headers/delete/{{$header->id}}"><button class="btn btn-secondary"> OUI <i class="fas fa-paper-plane-o ml-1"></i></button></a>
                                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> NON <i class="fas fa-paper-plane-o ml-1"></i></button>
                                     </div>
                               

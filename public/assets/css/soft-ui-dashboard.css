@@ -20855,7 +20855,7 @@ hr.horizontal.gray-light {
   padding-left: 1rem;
   padding-right: 1rem;
   font-weight: 500;
-  color: #67748e;
+  color: #fff;
 }
 
 .navbar-vertical .navbar-nav .nav-link>i {
@@ -20925,7 +20925,7 @@ hr.horizontal.gray-light {
 }
 
 .navbar-vertical.navbar-expand-xs.fixed-start {
-  background-color:  #0000002B;
+  background-color:  #000;
   left: 0;
 }
 
@@ -21628,8 +21628,8 @@ hr.horizontal.gray-light {
 }
 
 .navbar-vertical .navbar-nav>.nav-item .nav-link.active {
-  color: #344767;
-  background-color: #fff;
+  color: #fff;
+  background-color: #cc2323;
 }
 
 .navbar-vertical .navbar-nav>.nav-item .nav-link.active .icon {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blogs;
 use App\Models\Galeries;
+use App\Models\Headers;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -11,6 +12,7 @@ class IndexController extends Controller
     public function index(){
         $galeries = Galeries::take(6)->get();
         $blogs = Blogs::take(6)->get();
-        return view('site.index', compact('galeries', 'blogs'));
+        $headers = Headers::all();
+        return view('site.index', compact('galeries', 'blogs', 'headers'));
     }
 }

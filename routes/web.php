@@ -70,6 +70,11 @@ Route::prefix('admin')->group(function () {
         Route::match(['get', 'post'], '/teams/edit/{id}', 'App\Http\Controllers\TeamController@edit');
         Route::match(['get', 'post'], '/teams/delete/{id}', 'App\Http\Controllers\TeamController@delete');
 
+        Route::match(['get', 'post'], '/headers', 'App\Http\Controllers\HeaderController@show');
+        Route::match(['get', 'post'], '/headers/store', 'App\Http\Controllers\HeaderController@store');
+        Route::match(['get', 'post'], '/headers/edit/{id}', 'App\Http\Controllers\HeaderController@edit');
+        Route::match(['get', 'post'], '/headers/delete/{id}', 'App\Http\Controllers\HeaderController@delete');
+
       
         Route::match(['get', 'post'], '/users', 'App\Http\Controllers\UserController@show');
         Route::match(['get', 'post'], '/users/add', 'App\Http\Controllers\UserController@add');
